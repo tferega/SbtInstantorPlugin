@@ -8,7 +8,7 @@ organization := "com.instantor"
 
 scalaVersion := "2.10.4"
 
-version := "0.0.1-SNAPSHOT"
+version := "0.0.1"
 
 unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
 
@@ -33,3 +33,17 @@ scalacOptions := Seq(
 )
 
 libraryDependencies += "com.ferega.props" %% "propsloader-scalaapi" % "0.0.1"
+
+publishTo := Some(
+  if (version.value endsWith "SNAPSHOT") {
+    "Element Snapshots" at "http://repo.element.hr/nexus/content/repositories/snapshots/"
+  }  else {
+    "Element Releases" at "http://repo.element.hr/nexus/content/repositories/releases/"
+  }
+)
+
+credentials += Credentials(Path.userHome / ".config" / "SbtBranchLoader" / "nexus.config")
+
+publishArtifact in (Compile, packageSrc) := false
+
+publishArtifact in (Compile, packageDoc) := false
