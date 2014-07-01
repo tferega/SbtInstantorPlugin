@@ -8,7 +8,7 @@ organization := "com.instantor"
 
 scalaVersion := "2.10.4"
 
-version := "0.0.1"
+version := "0.0.2"
 
 unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
 
@@ -32,7 +32,7 @@ scalacOptions := Seq(
   "-Yinline"
 )
 
-libraryDependencies += "com.ferega.props" %% "propsloader-scalaapi" % "0.0.1"
+libraryDependencies += "com.ferega.props" %% "propsloader-scalaapi" % "0.0.2"
 
 publishTo := Some(
   if (version.value endsWith "SNAPSHOT") {
