@@ -1,14 +1,14 @@
-net.virtualvoid.sbt.graph.Plugin.graphSettings
+branchSettings
 
 sbtPlugin := true
 
-name := "sbt-branch-loader"
+name := "SBT Branch Loader"
 
 organization := "com.instantor"
 
 scalaVersion := "2.10.4"
 
-version := "0.0.2"
+version := "0.1.0"
 
 unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
 
@@ -34,15 +34,9 @@ scalacOptions := Seq(
 
 libraryDependencies += "com.ferega.props" %% "propsloader-scalaapi" % "0.0.2"
 
-publishTo := Some(
-  if (version.value endsWith "SNAPSHOT") {
-    "Element Snapshots" at "http://repo.element.hr/nexus/content/repositories/snapshots/"
-  }  else {
-    "Element Releases" at "http://repo.element.hr/nexus/content/repositories/releases/"
-  }
-)
+publishTo := Some(InstantorReleases)
 
-credentials += Credentials(Path.userHome / ".config" / "SbtBranchLoader" / "nexus.config")
+credentials += Credentials(configPath.value)
 
 publishArtifact in (Compile, packageSrc) := false
 

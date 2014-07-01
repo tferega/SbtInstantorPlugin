@@ -3,7 +3,7 @@ package com.instantor.branchloader
 import sbt._
 import Keys._
 
-object BranchPlugin extends Plugin {
+object BranchPlugin extends Plugin with InstantorRepositories {
   val branchPrefix    = SettingKey[String]("branch-prefix", "A prefix for branchKey.")
   val branchKey       = SettingKey[String]("branch-key", "A key in System props which contains the branch name.")
   val branchName      = SettingKey[Option[String]]("branch-name", "Name of the branch, loaded from System properties.")

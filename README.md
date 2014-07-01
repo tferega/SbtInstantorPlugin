@@ -11,7 +11,7 @@ To use it, add this line to your plugin definition file.
 // | system properties.                                                                  |
 // +-------------------------------------------------------------------------------------+
 
-addSbtPlugin("com.instantor" % "sbt-branch-loader" % "0.0.2")
+addSbtPlugin("com.instantor" % "sbt-branch-loader" % "0.1.0")
 ```
 
 Main key SbtBranchLoader provides is `configPath`. It specifies a path to credentials file based on a branch name specified in the System properties.

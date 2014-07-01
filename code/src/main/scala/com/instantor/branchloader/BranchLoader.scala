@@ -14,14 +14,14 @@ class BranchLoader(logger: sbt.Logger) {
       case Some(branch) =>
         logger.info(s"""Detected branch: $branch""")
       case None =>
-        logger.warn("""Java property "branch" not defined. To define it use: sbt --jvm "branch=#####"""")
+        logger.info("Not using a branch")
     }
 
     branchOpt
   }
 
   def branchFolder(baseFolder:String, branchNameOpt: Option[String]): String =
-    branchNameOpt.map("_" + _).getOrElse(baseFolder)
+    branchNameOpt.map(baseFolder + "_" + _).getOrElse(baseFolder)
 
   def configPath(configHome: File, configFolder: String, branchFolder: String, configFilename: String): File = {
     val path = configHome / configFolder / branchFolder / configFilename
