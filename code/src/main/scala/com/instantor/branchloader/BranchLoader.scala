@@ -2,10 +2,13 @@ package com.instantor.branchloader
 
 import com.ferega.props.sapi._
 
+import java.io.File
+import sbt.richFile
+
 class BranchLoader(logger: sbt.Logger) {
-  def loadBranch: Option[String] = {
+  def branchName(key: String): Option[String] = {
     val pl = new PropsLoader(true)
-    val branchOpt = pl.opt[String]("branch")
+    val branchOpt = pl.opt[String](key)
 
     branchOpt match {
       case Some(branch) =>
@@ -17,14 +20,12 @@ class BranchLoader(logger: sbt.Logger) {
     branchOpt
   }
 
-  def loadBranchFolder(baseFolder:String, branchOpt: Option[String]): String = {
-    val folder = branchOpt match {
-      case Some(branch) =>
-        baseFolder + "_" + branch
-      case None =>
-        baseFolder
-    }
-    logger.info(s"""Branch folder: $folder""")
-    folder
+  def branchFolder(baseFolder:String, branchNameOpt: Option[String]): String =
+    branchNameOpt.map("_" + _).getOrElse(baseFolder)
+
+  def configPath(configHome: File, configFolder: String, branchFolder: String, configFilename: String): File = {
+    val path = configHome / configFolder / branchFolder / configFilename
+    logger.info(s"Config path: ${ path.getCanonicalPath }")
+    path
   }
 }
