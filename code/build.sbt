@@ -2,13 +2,13 @@ branchSettings
 
 sbtPlugin := true
 
-name := "SBT Branch Loader"
+name := "SBT Instantor Plugin"
 
 organization := "com.instantor"
 
 scalaVersion := "2.10.4"
 
-version := "0.1.0"
+version := "0.1.2"
 
 unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
 
@@ -41,3 +41,7 @@ credentials += Credentials(configPath.value)
 publishArtifact in (Compile, packageSrc) := false
 
 publishArtifact in (Compile, packageDoc) := false
+
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.5.0")
+
+addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.7.4")

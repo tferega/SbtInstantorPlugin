@@ -1,1 +1,1 @@
-branchSettings
+instantorSettings

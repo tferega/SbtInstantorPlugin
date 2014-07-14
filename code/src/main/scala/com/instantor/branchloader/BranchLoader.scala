@@ -23,8 +23,8 @@ class BranchLoader(logger: sbt.Logger) {
   def branchFolder(baseFolder:String, branchNameOpt: Option[String]): String =
     branchNameOpt.map(baseFolder + "_" + _).getOrElse(baseFolder)
 
-  def configPath(configHome: File, configFolder: String, branchFolder: String, configFilename: String): File = {
-    val path = configHome / configFolder / branchFolder / configFilename
+  def configPath(configHome: File, branchFolder: String, configFilename: String): File = {
+    val path = configHome / branchFolder / configFilename
     logger.info(s"Config path: ${ path.getCanonicalPath }")
     path
   }

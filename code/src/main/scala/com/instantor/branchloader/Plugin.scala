@@ -3,28 +3,116 @@ package com.instantor.branchloader
 import sbt._
 import Keys._
 
-object BranchPlugin extends Plugin with InstantorRepositories {
-  val branchPrefix    = SettingKey[String]("branch-prefix", "A prefix for branchKey.")
-  val branchKey       = SettingKey[String]("branch-key", "A key in System props which contains the branch name.")
-  val branchName      = SettingKey[Option[String]]("branch-name", "Name of the branch, loaded from System properties.")
-  val baseFolder      = SettingKey[String]("base-folder", "Project-specific part of credentialsFolder.")
-  val branchFolder    = SettingKey[String]("branch-folder", "Used to construct credentialsPath (third part).")
-  val configHome      = SettingKey[File]("config-home", "Used to construct credentialsPath (first part).")
-  val configFolder    = SettingKey[String]("config-folder", "Used to construct credentialsPath (second part).")
-  val configFilename  = SettingKey[String]("config-filename", "Used to construct credentialsPath (fourth part).")
-  val configPath      = SettingKey[File]("config-path", "Folder from which to load Credentials.")
+import com.typesafe.sbteclipse.plugin.EclipsePlugin.{ EclipseKeys, settings => eclipseSettings }
+import net.virtualvoid.sbt.graph.Plugin.graphSettings
 
-  private val loader = new BranchLoader(ConsoleLogger())
+object InstantorPlugin extends
+    Plugin with
+    BranchPlugin with
+    InstantorRepositories {
 
-  val branchSettings: Seq[Setting[_]] = Seq(
-      branchPrefix   <<= name,
-      branchKey      <<= (branchPrefix)(_ + ".branch"),
-      branchName     <<= (branchKey)(loader.branchName),
-      baseFolder     <<= name,
-      branchFolder   <<= (baseFolder, branchName)(loader.branchFolder),
-      configHome     :=  Path.userHome,
-      configFolder   :=  ".config",
-      configFilename :=  "nexus.config",
-      configPath     <<= (configHome, configFolder, branchFolder, configFilename)(loader.configPath)
+  val instantorSettings: Seq[Setting[_]] =
+    eclipseSettings ++ graphSettings ++
+    branchSettings ++ otherSettings ++ publishingSettings ++ resolverSettings
+
+  // ---------------------------------------------------------------------------
+
+  val publishingSettings: Seq[Setting[_]] = Seq(
+    publishTo := Some(
+      if (version.value endsWith "SNAPSHOT") {
+        InstantorPrivateSnapshots
+      } else {
+        InstantorPrivateReleases
+      }
+    ),
+    credentials += Credentials(configPath.value)
+  )
+
+  val resolverSettings: Seq[Setting[_]] = Seq(
+      resolvers := Seq(
+        InstantorNexus,
+        InstantorPrivateReleases,
+        InstantorPrivateSnapshots),
+      externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
+  )
+
+  val otherSettings: Seq[Setting[_]] = Seq(
+      crossScalaVersions := Seq("2.10.4"),
+      scalaVersion := crossScalaVersions.value.head,
+      scalacOptions := (
+        scalaVersion.value match {
+          case x if x startsWith "2.11" => Seq(
+            "-deprecation",
+            "-encoding", "UTF-8",
+            "-feature",
+            "-language:existentials",
+            "-language:implicitConversions",
+            "-language:postfixOps",
+            "-language:reflectiveCalls",
+            "-optimise",
+            "-unchecked",
+            "-Xcheckinit",
+            "-Xlint",
+            "-Xmax-classfile-name", "72",
+            "-Xno-forwarders",
+            "-Xverify",
+            "-Yclosure-elim",
+            "-Yconst-opt",
+            "-Ydead-code",
+            "-Yinline-warnings",
+            "-Yinline",
+            "-Yrepl-sync",
+            "-Ywarn-adapted-args",
+            "-Ywarn-dead-code",
+            "-Ywarn-inaccessible",
+            "-Ywarn-infer-any",
+            "-Ywarn-nullary-override",
+            "-Ywarn-nullary-unit",
+            "-Ywarn-numeric-widen",
+            "-Ywarn-unused")
+          case x if x startsWith "2.10" => Seq(
+            "-deprecation",
+            "-encoding", "UTF-8",
+            "-feature",
+            "-language:existentials",
+            "-language:implicitConversions",
+            "-language:postfixOps",
+            "-language:reflectiveCalls",
+            "-optimise",
+            "-unchecked",
+            "-Xcheckinit",
+            "-Xlint",
+            "-Xmax-classfile-name", "72",
+            "-Xno-forwarders",
+            "-Xverify",
+            "-Yclosure-elim",
+            "-Ydead-code",
+            "-Yinline-warnings",
+            "-Yinline",
+            "-Yrepl-sync",
+            "-Ywarn-adapted-args",
+            "-Ywarn-dead-code",
+            "-Ywarn-inaccessible",
+            "-Ywarn-nullary-override",
+            "-Ywarn-nullary-unit",
+            "-Ywarn-numeric-widen")
+          case _ => Seq(
+            "-deprecation",
+            "-encoding", "UTF-8",
+            "-optimise",
+            "-unchecked",
+            "-Xcheckinit",
+            "-Xmax-classfile-name", "72",
+            "-Xno-forwarders",
+            "-Yclosure-elim",
+            "-Ydead-code",
+            "-Yinline",
+            "-Ywarn-dead-code")
+        }),
+      javacOptions := Seq(
+        "-deprecation",
+        "-encoding", "UTF-8",
+        "-Xlint:unchecked"),
+      EclipseKeys.eclipseOutput := Some(".target")
   )
 }
