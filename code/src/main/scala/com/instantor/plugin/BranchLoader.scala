@@ -1,4 +1,4 @@
-package com.instantor.branchloader
+package com.instantor.plugin
 
 import com.ferega.props.sapi._
 

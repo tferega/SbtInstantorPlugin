@@ -1,4 +1,4 @@
-package com.instantor.branchloader
+package com.instantor.plugin
 
 import sbt._
 import Keys._
@@ -15,7 +15,7 @@ trait BranchPlugin {
   val configFilename  = SettingKey[String]("config-filename", "Used to construct credentialsPath (fourth part).")
   val configPath      = SettingKey[File]("config-path", "Folder from which to load Credentials.")
 
-  val branchSettings: Seq[Setting[_]] = Seq(
+  lazy val branchSettings: Seq[Setting[_]] = Seq(
       branchPrefix   := name.value,
       branchKey      := branchPrefix.value + ".branch",
       branchName     := loader.branchName(branchKey.value),

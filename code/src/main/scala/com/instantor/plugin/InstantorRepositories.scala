@@ -1,4 +1,4 @@
-package com.instantor.branchloader
+package com.instantor.plugin
 
 import sbt.toRepositoryName
 

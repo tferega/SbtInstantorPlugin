@@ -5,7 +5,7 @@ resolvers := Seq(
 
 externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
 
-addSbtPlugin("com.instantor" % "sbt-branch-loader" % "0.1.0")
+addSbtPlugin("com.instantor" % "sbt-instantor-plugin" % "0.2.0")
 
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.5.0")
 

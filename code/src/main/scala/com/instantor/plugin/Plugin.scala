@@ -1,4 +1,4 @@
-package com.instantor.branchloader
+package com.instantor.plugin
 
 import sbt._
 import Keys._
@@ -11,24 +11,26 @@ object InstantorPlugin extends
     BranchPlugin with
     InstantorRepositories {
 
-  val instantorSettings: Seq[Setting[_]] =
+  lazy val instantorSettings: Seq[Setting[_]] =
     eclipseSettings ++ graphSettings ++
     branchSettings ++ otherSettings ++ publishingSettings ++ resolverSettings
 
   // ---------------------------------------------------------------------------
 
-  val publishingSettings: Seq[Setting[_]] = Seq(
+  lazy val publishingSettings: Seq[Setting[_]] = Seq(
     publishTo := Some(
-      if (version.value endsWith "SNAPSHOT") {
+      if (version.value endsWith "-SNAPSHOT") {
         InstantorPrivateSnapshots
       } else {
         InstantorPrivateReleases
       }
     ),
-    credentials += Credentials(configPath.value)
+    credentials += Credentials(configPath.value),
+    publishArtifact in (Compile, packageDoc) := false,
+    publishArtifact in (Compile, packageSrc) := false
   )
 
-  val resolverSettings: Seq[Setting[_]] = Seq(
+  lazy val resolverSettings: Seq[Setting[_]] = Seq(
       resolvers := Seq(
         InstantorNexus,
         InstantorPrivateReleases,
@@ -36,7 +38,7 @@ object InstantorPlugin extends
       externalResolvers := Resolver.withDefaultResolvers(resolvers.value, mavenCentral = false)
   )
 
-  val otherSettings: Seq[Setting[_]] = Seq(
+  lazy val otherSettings: Seq[Setting[_]] = Seq(
       crossScalaVersions := Seq("2.10.4"),
       scalaVersion := crossScalaVersions.value.head,
       scalacOptions := (
