@@ -9,7 +9,8 @@ import net.virtualvoid.sbt.graph.Plugin.graphSettings
 object InstantorPlugin extends
     Plugin with
     BranchPlugin with
-    InstantorRepositories {
+    InstantorRepositories with
+    Dependencies {
 
   lazy val instantorSettings: Seq[Setting[_]] =
     eclipseSettings ++ graphSettings ++
