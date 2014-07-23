@@ -8,4 +8,6 @@ trait InstantorRepositories {
   val InstantorSnapshots        = "Instantor Snapshots"         at "http://www.instantor.com/nexus/content/repositories/snapshots/"
   val InstantorPrivateReleases  = "Instantor Private Releases"  at "http://www.instantor.com/nexus/content/repositories/releases-private/"
   val InstantorPrivateSnapshots = "Instantor Private Snapshots" at "http://www.instantor.com/nexus/content/repositories/snapshots-private/"
+  val BSPSnapshots              = "BSP Snapshots"               at "http://www.instantor.com/nexus/content/repositories/bsp-snapshots/"
+  val BSPReleases               = "BSP Releases"                at "http://www.instantor.com/nexus/content/repositories/bsp-releases/"
 }
