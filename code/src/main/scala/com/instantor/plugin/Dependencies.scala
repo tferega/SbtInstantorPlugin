@@ -4,91 +4,60 @@ import sbt._
 import Keys._
 
 trait Dependencies {
-  val akkaVersion = "2.1.1"
-  val akkaActor   = "com.typesafe.akka" %% "akka-actor"   % akkaVersion
-  val akkaCluster = "com.typesafe.akka" %% "akka-cluster" % akkaVersion
-  val akkaRemote  = "com.typesafe.akka" %% "akka-remote"  % akkaVersion
-  val akkaAll     = Seq(akkaActor, akkaCluster, akkaRemote)
+  val akkaActor   = "com.typesafe.akka" %% "akka-actor"   % "2.3.4"
+  val akkaRemote  = "com.typesafe.akka" %% "akka-remote"  % "2.3.4"
+  val akkaCluster = "com.typesafe.akka" %% "akka-cluster" % "2.3.4"
 
-  val commonsCodecVersion = "1.9"
-  val commonsIoVersion    = "2.4"
-  val commonsLangVersion  = "3.3.2"
-  val commonsCodec        = "commons-codec"      % "commons-codec" % commonsCodecVersion
-  val commonsIo           = "commons-io"         % "commons-io"    % commonsIoVersion
-  val commonsLang         = "org.apache.commons" % "commons-lang3" % commonsLangVersion
-  val commonsAll          = Seq(commonsCodec, commonsIo, commonsLang)
+  val commonsCodec = "commons-codec"      % "commons-codec" % "1.9"
+  val commonsIo    = "commons-io"         % "commons-io"    % "2.4"
+  val commonsLang  = "org.apache.commons" % "commons-lang3" % "3.3.2"
 
-  val dispatchVersion = "0.11.1"
-  val dispatchCore    = "net.databinder.dispatch" %% "dispatch-core" % dispatchVersion
-  val dispatchHttp    = "net.databinder"          %% "dispatch-http" % dispatchVersion
-  val dispatchAll     = Seq(dispatchCore, dispatchHttp)
+  val dispatchCore = "net.databinder.dispatch" %% "dispatch-core" % "0.11.1"
+  val dispatchHttp = "net.databinder"          %% "dispatch-http" % "0.11.1"
 
-  val dslClientVersion = "0.1.15"
-  val dslClient        = "com.dslplatform" % "dsl-client-http-apache" % dslClientVersion
+  val dslClient = "com.dslplatform" % "dsl-client-http-apache" % "0.4.15"
 
-  val jetty = Seq(
-      "org.eclipse.jetty" % "jetty-webapp" % "9.2.1.v20140609" % "container"
-    , "org.eclipse.jetty.orbit" % "javax.servlet" % "3.0.0.v201112011016" % "container" artifacts Artifact("javax.servlet", "jar", "jar")
-  )
+  val jetty   = "org.eclipse.jetty" % "jetty-webapp" % "9.2.2.v20140723" % "container"
+  val servlet = "javax.servlet" % "javax.servlet-api" % "3.0.1" % "provided"
 
-  val jodaTimeVersion    = "2.3"
-  val jodaConvertVersion = "1.6"
-  val jodaTime           = "joda-time" % "joda-time"    % jodaTimeVersion
-  val jodaConvert        = "org.joda"  % "joda-convert" % jodaConvertVersion
-  val jodaAll            = Seq(jodaTime, jodaConvert)
+  val jodaTime    = "joda-time" % "joda-time"    % "2.3"
+  val jodaConvert = "org.joda"  % "joda-convert" % "1.6"
 
-  val jsoupVersion = "1.7.3"
-  val jsoup        = "org.jsoup" % "jsoup" % jsoupVersion
+  val jsoup = "org.jsoup" % "jsoup" % "1.7.3"
+  
+  val junit          = "junit" % "junit" % "4.11" % "test"
+  val junitInterface = "com.novocode" % "junit-interface" % "0.11-RC1" % "test"
 
-  val junitVersion = "4.11"
-  val junit        = "junit" % "junit" % junitVersion
+  val liftCommon = "net.liftweb" %% "lift-common" % "2.6-M4"
+  val liftJson   = "net.liftweb" %% "lift-json"   % "2.6-M4"
+  val liftUtil   = "net.liftweb" %% "lift-util"   % "2.6-M4"
+  val liftWebkit = "net.liftweb" %% "lift-webkit" % "2.6-M4"
 
-  val liftVersion = "2.6-M4"
-  val liftCommon = "net.liftweb" %% "lift-common" % liftVersion
-  val liftJson   = "net.liftweb" %% "lift-json"   % liftVersion
-  val liftUtil   = "net.liftweb" %% "lift-util"   % liftVersion
-  val liftWebkit = "net.liftweb" %% "lift-webkit" % liftVersion
-  val liftAll     = Seq(liftCommon, liftJson, liftUtil, liftWebkit)
+  val logback = "ch.qos.logback" % "logback-classic" % "1.1.2"
 
-  val logbackVersion = "1.1.2"
-  val logback        = "ch.qos.logback" % "logback-classic" % logbackVersion
+  val lrl = "hr.element.lrl" % "last-resort-loader" % "0.0.2"
 
-  val lrlVersion = "0.0.2"
-  val lrl        = "hr.element.lrl" % "last-resort-loader" % lrlVersion
+  val ngsAkka       = "hr.ngs" %% "ngs-akka"       % "0.4.1-M1"
+  val ngsClient     = "hr.ngs" %% "ngs-client"     % "0.4.1-M1"
+  val ngsCore       = "hr.ngs" %% "ngs-core"       % "0.4.1-M1"
+  val ngsInterfaces = "hr.ngs" %% "ngs-interfaces" % "0.4.1-M1"
+  val ngsUtil       = "hr.ngs" %% "ngs-util"       % "0.4.1-M1"
 
-  val ngsVersion    = "0.4.1-M1"
-  val ngsAkka       = "hr.ngs" %% "ngs-akka"       % ngsVersion
-  val ngsClient     = "hr.ngs" %% "ngs-client"     % ngsVersion
-  val ngsCore       = "hr.ngs" %% "ngs-core"       % ngsVersion
-  val ngsInterfaces = "hr.ngs" %% "ngs-interfaces" % ngsVersion
-  val ngsUtil       = "hr.ngs" %% "ngs-util"       % ngsVersion
-  val ngsAll        = Seq(ngsAkka, ngsClient, ngsCore, ngsInterfaces, ngsUtil)
+  val propsLoaderApi  = "com.instantor.props" %  "propsloader-api"  % "0.3.2"
+  val propsLoaderCore = "com.instantor.props" %  "propsloader-core" % "0.3.2"
+  
+  val selenate  = "net.selenate" % "selenate-client" % "0.2.16"
 
-  val propsLoaderVersion = "0.3.2"
-  val propsLoaderApi     = "com.instantor.props" %  "propsloader-api"  % propsLoaderVersion
-  val propsLoaderCore    = "com.instantor.props" %  "propsloader-core" % propsLoaderVersion
-  val propsLoaderAll     = Seq(propsLoaderApi, propsLoaderCore)
+  val scalaIoCore = "com.github.scala-incubator.io" %% "scala-io-core" % "0.4.3"
+  val scalaIoFile = "com.github.scala-incubator.io" %% "scala-io-file" % "0.4.3"
 
-  val selenateVersion = "0.2.16"
-  val selenate        = "net.selenate" % "selenate-client" % selenateVersion
+  val scalaTest = "org.scalatest" %% "scalatest" % "2.2.0" % "test"
 
-  val scalaIoVersion = "0.4.3"
-  val scalaIoCore    = "com.github.scala-incubator.io" %% "scala-io-core" % scalaIoVersion
-  val scalaIoFile    = "com.github.scala-incubator.io" %% "scala-io-file" % scalaIoVersion
-  val scalaIoAll     = Seq(scalaIoCore, scalaIoFile)
+  val scalaTime = "com.github.nscala-time" %% "nscala-time" % "1.2.0"
 
-  val scalaTestVersion = "2.2.0"
-  val scalaTest        = "org.scalatest" %% "scalatest" % scalaTestVersion
+  val scalaUuid = "io.jvm" %% "scala-uuid" % "0.1.3"
 
-  val scalaTimeVersion = "0.4.2"
-  val scalaTime        = "com.github.nscala-time" %% "nscala-time" % scalaTimeVersion
+  val slf4j = "org.slf4j" % "slf4j-api" % "1.7.7"
 
-  val scalaUuidVersion = "0.1.3"
-  val scalaUuid        = "io.jvm" %% "scala-uuid" % scalaUuidVersion
-
-  val slf4jVersion = "1.7.7"
-  val slf4j        = "org.slf4j" %  "slf4j-api" % slf4jVersion
-
-  val xstreamVersion = "1.4.7"
-  val xstream        = "com.thoughtworks.xstream" % "xstream" % xstreamVersion
+  val xstream   = "com.thoughtworks.xstream" % "xstream" % "1.4.7"
 }
