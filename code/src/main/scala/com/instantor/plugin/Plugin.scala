@@ -26,7 +26,7 @@ object InstantorPlugin extends
         InstantorPrivateReleases
       }
     ),
-    credentials += Credentials(configPath.value),
+    credentials ++= projectCredentials.value,
     publishArtifact in (Compile, packageDoc) := false
   )
 

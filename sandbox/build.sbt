@@ -1,1 +1,3 @@
 instantorSettings
+
+name := "Sandbox"

@@ -50,6 +50,9 @@ trait Dependencies {
   val liftWebkit = "net.liftweb" %% "lift-webkit" % liftVersion
   val liftAll     = Seq(liftCommon, liftJson, liftUtil, liftWebkit)
 
+  val logbackVersion = "1.1.2"
+  val logback        = "ch.qos.logback" % "logback-classic" % logbackVersion
+
   val lrlVersion = "0.0.2"
   val lrl        = "hr.element.lrl" % "last-resort-loader" % lrlVersion
 
@@ -61,10 +64,10 @@ trait Dependencies {
   val ngsUtil       = "hr.ngs" %% "ngs-util"       % ngsVersion
   val ngsAll        = Seq(ngsAkka, ngsClient, ngsCore, ngsInterfaces, ngsUtil)
 
-  val propsLoaderVersion = "0.1.1"
-  val propsLoaderJava  = "com.instantor.props" %  "propsloader-javaapi"  % propsLoaderVersion
-  val propsLoaderScala = "com.instantor.props" %  "propsloader-scalaapi" % propsLoaderVersion
-  val propsLoaderAll   = Seq(propsLoaderJava, propsLoaderScala)
+  val propsLoaderVersion = "0.3.0"
+  val propsLoaderApi     = "com.instantor.props" %  "propsloader-api"  % propsLoaderVersion
+  val propsLoaderCore    = "com.instantor.props" %  "propsloader-core" % propsLoaderVersion
+  val propsLoaderAll     = Seq(propsLoaderApi, propsLoaderCore)
 
   val selenateVersion = "0.2.16"
   val selenate        = "net.selenate" % "selenate-client" % selenateVersion
@@ -82,6 +85,9 @@ trait Dependencies {
 
   val scalaUuidVersion = "0.1.3"
   val scalaUuid        = "io.jvm" %% "scala-uuid" % scalaUuidVersion
+
+  val slf4jVersion = "1.7.7"
+  val slf4j        = "org.slf4j" %  "slf4j-api" % slf4jVersion
 
   val xstreamVersion = "1.4.7"
   val xstream        = "com.thoughtworks.xstream" % "xstream" % xstreamVersion
