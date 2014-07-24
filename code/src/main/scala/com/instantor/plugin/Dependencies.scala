@@ -64,7 +64,7 @@ trait Dependencies {
   val ngsUtil       = "hr.ngs" %% "ngs-util"       % ngsVersion
   val ngsAll        = Seq(ngsAkka, ngsClient, ngsCore, ngsInterfaces, ngsUtil)
 
-  val propsLoaderVersion = "0.3.0"
+  val propsLoaderVersion = "0.3.2"
   val propsLoaderApi     = "com.instantor.props" %  "propsloader-api"  % propsLoaderVersion
   val propsLoaderCore    = "com.instantor.props" %  "propsloader-core" % propsLoaderVersion
   val propsLoaderAll     = Seq(propsLoaderApi, propsLoaderCore)
