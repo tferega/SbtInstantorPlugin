@@ -6,7 +6,7 @@ name := "SBT Instantor Plugin"
 
 organization := "com.instantor"
 
-version := "0.3.4"
+version := "0.3.7-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
 
