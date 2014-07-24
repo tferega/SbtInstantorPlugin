@@ -24,7 +24,7 @@ trait Dependencies {
   val jodaConvert = "org.joda"  % "joda-convert" % "1.6"
 
   val jsoup = "org.jsoup" % "jsoup" % "1.7.3"
-  
+
   val junit          = "junit" % "junit" % "4.11" % "test"
   val junitInterface = "com.novocode" % "junit-interface" % "0.11-RC1" % "test"
 
@@ -43,9 +43,9 @@ trait Dependencies {
   val ngsInterfaces = "hr.ngs" %% "ngs-interfaces" % "0.4.1-M1"
   val ngsUtil       = "hr.ngs" %% "ngs-util"       % "0.4.1-M1"
 
-  val propsLoaderApi  = "com.instantor.props" %  "propsloader-api"  % "0.3.2"
-  val propsLoaderCore = "com.instantor.props" %  "propsloader-core" % "0.3.2"
-  
+  val propsLoaderApi  = "com.instantor.props" %  "propsloader-api"  % "0.3.4"
+  val propsLoaderCore = "com.instantor.props" %  "propsloader-core" % "0.3.4"
+
   val selenate  = "net.selenate" % "selenate-client" % "0.2.16"
 
   val scalaIoCore = "com.github.scala-incubator.io" %% "scala-io-core" % "0.4.3"
