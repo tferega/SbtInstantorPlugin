@@ -3,7 +3,7 @@ setlocal
 pushd
 cd "%~dp0"
 
-set JVM_PARAMS=-DSBTInstantorPlugin.branch=master -Xss2m -Xms2g -Xmx2g -XX:+TieredCompilation -XX:ReservedCodeCacheSize=256m -XX:MaxPermSize=512m -XX:+CMSClassUnloadingEnabled -XX:+UseNUMA -XX:+UseParallelGC -Dscalac.patmat.analysisBudget=off
+set JVM_PARAMS=-DSbtInstantorPlugin.branch=master -Xss2m -Xms2g -Xmx2g -XX:+TieredCompilation -XX:ReservedCodeCacheSize=256m -XX:MaxPermSize=512m -XX:+CMSClassUnloadingEnabled -XX:+UseNUMA -XX:+UseParallelGC -Dscalac.patmat.analysisBudget=off
 
 set LOG_LEVEL=
 set NO_PAUSE=false

@@ -22,8 +22,7 @@ object BranchLoader {
   }
 
   def credentials(projectName: String): Seq[Credentials] = {
-    val branchKey = projectName + ".branch"
-    val pl = PropsLoaderFactory.init(logger).loadBranch(projectName, branchKey)
+    val pl = PropsLoaderFactory.init(logger).loadBranch(projectName)
     val configFile = pl.resolve("nexus").toFile()
     val credentialsFile =
       if (configFile.exists) {

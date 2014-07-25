@@ -39,7 +39,6 @@ object RevisionResolver extends InstantorRepositories {
       .getRevision
   }
 
-
   private def getResolver(name: String, root: String, pattern: String): DependencyResolver = {
     val resolver = new IBiblioResolver
     resolver.setM2compatible(true)
@@ -54,7 +53,6 @@ object RevisionResolver extends InstantorRepositories {
     val ivySettings = new IvySettings
     ivySettings.addResolver(resolver)
     ivySettings.setDefaultResolver(resolver.getName)
-//    ivySettings.l
     Ivy.newInstance(ivySettings)
   }
 

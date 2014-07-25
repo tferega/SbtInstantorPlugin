@@ -10,12 +10,15 @@ trait Dependencies {
   val akkaCluster = "com.typesafe.akka" %% "akka-cluster" % "2.3.4"
   val akkaRemote  = "com.typesafe.akka" %% "akka-remote"  % "2.3.4"
 
-  val bcMail       = "org.bouncycastle" % "bcmail-jdk16"   % "1.46"
-  val bouncyCastle = "org.bouncycastle" % "bcprov-jdk15on" % "1.50"
+  val asyncHttpClient = "com.ning" % "async-http-client" % "1.8.12"
+
+  val bouncyCastleMail     = "org.bouncycastle" % "bcmail-jdk16"   % "1.46"
+  val bouncyCastleProvider = "org.bouncycastle" % "bcprov-jdk15on" % "1.50"
 
   val commonsCodec        = "commons-codec"       % "commons-codec"        % "1.9"
   val commonsCollections  = "commons-collections" % "commons-collections"  % "3.2.1"
   val commonsCollections4 = "org.apache.commons"  % "commons-collections4" % "4.0"
+  val commonsCsv          = "org.apache.commons"  % "commons-csv"          % "0.1"
   val commonsIo           = "commons-io"          % "commons-io"           % "2.4"
   val commonsLang         = "org.apache.commons"  % "commons-lang3"        % "3.3.2"
   val commonsLogging      = "commons-logging"     % "commons-logging"      % "1.2"
@@ -27,8 +30,7 @@ trait Dependencies {
   val c3p0 = "com.mchange" % "c3p0" % "0.9.2.1"
 
   val dispatchCore    = "net.databinder.dispatch" %% "dispatch-core" % "0.11.1"
-  val dispatchHttp    = "net.databinder"          %% "dispatch-http" % "0.11.1"
-  val dispatchClassic = "net.databinder"          %% "dispatch-http" % "0.8.9"
+  val dispatchClassic = "net.databinder"          %% "dispatch-http" % "0.8.10"
 
   val doitCsv = "hr.element.doit" %% "doit-csv" % "0.1.7"
 
@@ -71,14 +73,20 @@ trait Dependencies {
   val ngsInterfaces = "hr.ngs" %% "ngs-interfaces" % "0.4.1-M1"
   val ngsUtil       = "hr.ngs" %% "ngs-util"       % "0.4.1-M1"
 
-  val picoCon = "org.picocontainer" % "picocontainer" % "3.0.a3" classifier "ngs"
+  val openCsv = "net.sf.opencsv" % "opencsv" % "2.3"
+
+  val picoContainer = "org.picocontainer" % "picocontainer" % "3.0.a3" classifier "ngs"
 
   val postgres = "org.postgresql" %  "postgresql"   % "9.3-1102-jdbc41"
   val pgscala  = "org.pgscala"    %% "pgscala"      % "0.7.25"
   val pgpool   = "org.pgscala"    %% "pgscala-pool" % "0.2.18"
 
-  val propsLoaderApi  = "com.instantor.props" %  "propsloader-api"  % "0.3.6"
-  val propsLoaderCore = "com.instantor.props" %  "propsloader-core" % "0.3.6"
+  val pgscalaLegacy = "hr.element.pgscala" %% "pgscala-pool-legacy" % "0.1.7-2"
+
+  val propsLoaderApi  = "com.instantor.props" %  "propsloader-api"  % "0.3.10"
+  val propsLoaderCore = "com.instantor.props" %  "propsloader-core" % "0.3.10"
+
+  val rhino = "org.mozilla" % "rhino" % "1.7R4"
 
   val scalaIoCore = "com.github.scala-incubator.io" %% "scala-io-core" % "0.4.3"
   val scalaIoFile = "com.github.scala-incubator.io" %% "scala-io-file" % "0.4.3"
@@ -92,10 +100,17 @@ trait Dependencies {
 
   val selenate  = "net.selenate" % "selenate-client" % "0.2.16"
 
+  val seleniumFirefox = "org.seleniumhq.selenium" % "selenium-firefox-driver" % "2.42.2"
+  val seleniumServer  = "org.seleniumhq.selenium" % "selenium-server"         % "2.42.2"
+
   val sprayCan       = "io.spray" %% "spray-can"     % "1.3.1"
   val sprayRouting   = "io.spray" %% "spray-routing" % "1.3.1"
 
-  val spyMemcached = "com.google.code.simple-spring-memcached" % "spymemcached" % "2.8.4"
+  val spyMemcached = "net.spy" % "spymemcached" % "2.11.4"
+
+  val squeryl = "org.squeryl" %% "squeryl" % "0.9.5-6"
+
+  val tagSoup = "org.ccil.cowan.tagsoup" % "tagsoup" % "1.2.1"
 
   val templater = "hr.ngs.templater" %% "templater" % "1.9.2-1"
 
@@ -105,6 +120,8 @@ trait Dependencies {
 
 
   /* Logging */
+  val akkaSlf4j = "com.typesafe.akka" %% "akka-slf4j" % "2.3.4"
+
   val logback = "ch.qos.logback" % "logback-classic" % "1.1.2"
 
   val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2"
@@ -112,8 +129,8 @@ trait Dependencies {
   val slf4j          = "org.slf4j" % "slf4j-api"        % "1.7.7"
   val log4jOverSlf4j = "org.slf4j" % "log4j-over-slf4j" % "1.7.7"
 
-  val totalogInterface = "com.instantor.totalog" % "totalog-interfaces" % "0.4.2"
-  val totalogTransport = "com.instantor.totalog" % "totalog-transport"  % "0.4.2"
+  val totalogInterfaces = "com.instantor.totalog" % "totalog-interfaces" % "0.5.1"
+  val totalogTransport  = "com.instantor.totalog" % "totalog-transport"  % "0.5.1"
 
 
   /* Testing  */
