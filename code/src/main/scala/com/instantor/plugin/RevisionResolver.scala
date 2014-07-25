@@ -1,6 +1,7 @@
 package com.instantor.plugin
 
 import java.io.InputStream
+import org.apache.commons.io.IOUtils
 import org.apache.ivy.core.module.descriptor._
 import org.apache.ivy.core.module.id.ModuleRevisionId
 import org.apache.ivy.core.resolve.ResolveOptions
@@ -8,13 +9,13 @@ import org.apache.ivy.core.settings.IvySettings
 import org.apache.ivy.Ivy
 import org.apache.ivy.plugins.resolver.{ DependencyResolver, IBiblioResolver }
 import sbt.MavenRepository
-import scalax.io.Resource
 
 object RevisionResolver extends InstantorRepositories {
   val VersionR = """version in ThisBuild := "(.*)""""r
   def getCurrentPluginVersion() = {
     try {
-      val body = Resource.fromClasspath("version.sbt").string("UTF-8")
+      val is   = RevisionResolver.getClass.getResourceAsStream("/version.sbt")
+      val body = IOUtils.toString(is, "UTF-8");
       try {
         val VersionR(version) = body
         version
@@ -24,7 +25,7 @@ object RevisionResolver extends InstantorRepositories {
       }
     } catch {
       case e: Exception =>
-        throw new IllegalArgumentException(s"An error occured while loading plugin current version!", e)
+        throw new IllegalArgumentException(s"An error occured while loading current plugin version!", e)
     }
   }
 

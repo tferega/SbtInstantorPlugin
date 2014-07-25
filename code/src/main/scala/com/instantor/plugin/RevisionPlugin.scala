@@ -8,15 +8,16 @@ import com.instantor.props.PropsLoader
 trait RevisionPlugin {
   private val logger = ConsoleLogger()
 
-  lazy val checkRevision = taskKey[Unit]("Checks the plugin current version versus latest published version")
-
   lazy val revisionSettings: Seq[Setting[_]] = Seq(
-    checkRevision := {
+    // We want to do the check on SBT startup.
+    onLoad := {
       val latestVersion  = RevisionResolver.resolveLatestPluginVersion
       val currentVersion = RevisionResolver.getCurrentPluginVersion
       if (currentVersion != latestVersion) {
         logger.warn(s"Current plugin version differs from latest published version: $currentVersion != $latestVersion")
       }
+
+      onLoad.value
     }
   )
 }

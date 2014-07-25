@@ -23,7 +23,7 @@ libraryDependencies ++= Seq(
 
 ReleaseKeys.versionFile := file("src") / "main" / "resources" / "version.sbt"
 
-libraryDependencies ++= Seq(scalaIoCore)
+libraryDependencies ++= Seq(commonsIo)
 
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.5.0")
 
