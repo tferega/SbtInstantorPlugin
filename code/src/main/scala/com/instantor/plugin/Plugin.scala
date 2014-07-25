@@ -4,17 +4,6 @@ import sbt._
 import Keys._
 import com.typesafe.sbteclipse.plugin.EclipsePlugin.{ EclipseKeys, settings => eclipseSettings }
 import net.virtualvoid.sbt.graph.Plugin.graphSettings
-import org.apache.ivy.core.settings.IvySettings
-import org.apache.ivy.plugins.resolver.IBiblioResolver
-import org.apache.ivy.core.resolve.ResolveOptions
-import org.apache.ivy.core.module.descriptor.DefaultModuleDescriptor
-import org.apache.ivy.core.module.id.ModuleRevisionId
-import org.apache.ivy.core.module.descriptor.DefaultDependencyDescriptor
-import org.apache.ivy.core.report.ResolveReport
-import org.apache.ivy.Ivy
-import org.apache.ivy.core.retrieve.RetrieveOptions
-import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
 
 object InstantorPlugin extends
     Plugin with

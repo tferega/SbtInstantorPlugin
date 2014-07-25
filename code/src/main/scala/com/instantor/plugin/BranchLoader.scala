@@ -1,11 +1,12 @@
 package com.instantor.plugin
 
-import com.instantor.props.PropsLoaderFactory
+import com.instantor.props.{ PropsLoader, PropsLoaderFactory }
 import org.slf4j.LoggerFactory
 import sbt.Credentials
 
 object BranchLoader {
   private val logger = LoggerFactory.getLogger(BranchLoader.getClass())
+  private val plFactory = PropsLoaderFactory.init(logger)
 
   def topProjectName(name: String) = {
     val topProjectName =
@@ -21,8 +22,10 @@ object BranchLoader {
     topProjectName
   }
 
-  def credentials(projectName: String): Seq[Credentials] = {
-    val pl = PropsLoaderFactory.init(logger).loadBranch(projectName)
+  def propsLoader(projectName: String) =
+    plFactory.loadBranch(projectName)
+
+  def credentials(pl: PropsLoader): Seq[Credentials] = {
     val configFile = pl.resolve("nexus").toFile()
     val credentialsFile =
       if (configFile.exists) {
