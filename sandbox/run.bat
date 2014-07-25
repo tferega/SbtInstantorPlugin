@@ -1,0 +1,1 @@
+java -DSandbox.branch=master -jar v:\SBT\sbt-launch.jar

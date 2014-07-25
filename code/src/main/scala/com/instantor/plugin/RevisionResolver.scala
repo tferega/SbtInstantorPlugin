@@ -1,5 +1,6 @@
 package com.instantor.plugin
 
+import java.io.InputStream
 import org.apache.ivy.core.module.descriptor._
 import org.apache.ivy.core.module.id.ModuleRevisionId
 import org.apache.ivy.core.resolve.ResolveOptions
@@ -7,15 +8,39 @@ import org.apache.ivy.core.settings.IvySettings
 import org.apache.ivy.Ivy
 import org.apache.ivy.plugins.resolver.{ DependencyResolver, IBiblioResolver }
 import sbt.MavenRepository
+import scalax.io.Resource
 
 object RevisionResolver extends InstantorRepositories {
-  def resolveLatestPluginVersion() =
-    resolveLatestVersion(
-        repo         = InstantorReleases,
-        scalaVersion = "2.10",
-        sbtVersion   = "0.13",
-        groupId      = "com.instantor",
-        artifactId   = "sbt-instantor-plugin")
+  val VersionR = """version in ThisBuild := "(.*)""""r
+  def getCurrentPluginVersion() = {
+    try {
+      val body = Resource.fromClasspath("version.sbt").string("UTF-8")
+      try {
+        val VersionR(version) = body
+        version
+      } catch {
+        case e: Exception =>
+          throw new IllegalArgumentException(s"Could not parse plugin version from input string: $body", e)
+      }
+    } catch {
+      case e: Exception =>
+        throw new IllegalArgumentException(s"An error occured while loading plugin current version!", e)
+    }
+  }
+
+  def resolveLatestPluginVersion() = {
+    try {
+      resolveLatestVersion(
+          repo         = InstantorReleases,
+          scalaVersion = "2.10",
+          sbtVersion   = "0.13",
+          groupId      = "com.instantor",
+          artifactId   = "sbt-instantor-plugin")
+    } catch {
+      case e: Exception =>
+        throw new IllegalArgumentException(s"An error occured while loading plugin latest published version!", e)
+    }
+  }
 
 
   def resolveLatestVersion(repo: MavenRepository, scalaVersion: String, sbtVersion: String, groupId: String, artifactId: String): String = {
@@ -33,7 +58,7 @@ object RevisionResolver extends InstantorRepositories {
     }
 
     resolveReport
-      .getArtifacts().get(0).asInstanceOf[MDArtifact]
+      .getArtifacts().get(0).asInstanceOf[AbstractArtifact]
       .getId
       .getModuleRevisionId
       .getRevision
