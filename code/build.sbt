@@ -14,7 +14,10 @@ unmanagedSourceDirectories in Test := Nil
 
 publishTo := Some(if (version.value endsWith "-SNAPSHOT") InstantorSnapshots else InstantorReleases)
 
-libraryDependencies ++= Seq(propsLoaderCore, logback)
+libraryDependencies ++= Seq(
+  propsLoaderCore,
+  logback,
+  "org.apache.ivy" % "ivy" % "2.4.0-rc1")
 
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.5.0")
 
