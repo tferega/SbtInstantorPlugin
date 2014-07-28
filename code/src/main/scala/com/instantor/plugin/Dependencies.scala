@@ -83,8 +83,8 @@ trait Dependencies {
 
   val pgscalaLegacy = "hr.element.pgscala" %% "pgscala-pool-legacy" % "0.1.7-2"
 
-  val propsLoaderApi  = "com.instantor.props" %  "propsloader-api"  % "0.3.10"
-  val propsLoaderCore = "com.instantor.props" %  "propsloader-core" % "0.3.10"
+  val propsLoaderApi  = "com.instantor.props" %  "propsloader-api"  % "0.3.11"
+  val propsLoaderCore = "com.instantor.props" %  "propsloader-core" % "0.3.11"
 
   val rhino = "org.mozilla" % "rhino" % "1.7R4"
 
@@ -130,7 +130,7 @@ trait Dependencies {
   val log4jOverSlf4j = "org.slf4j" % "log4j-over-slf4j" % "1.7.7"
 
   val totalogInterfaces = "com.instantor.totalog" % "totalog-interfaces" % "0.5.1"
-  val totalogTransport  = "com.instantor.totalog" % "totalog-transport"  % "0.5.1"
+  val totalogTransport  = "com.instantor.totalog" % "totalog-transport"  % "0.5.2"
 
 
   /* Testing  */
