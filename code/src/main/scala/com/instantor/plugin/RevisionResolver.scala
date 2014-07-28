@@ -13,41 +13,36 @@ import sbt.MavenRepository
 object RevisionResolver extends InstantorRepositories {
   private val VersionR = """version in ThisBuild := "(.*)""""r
 
-  def getCurrentPluginVersion() = {
+  def getCurrentPluginVersion() =
     try {
-      val is   = RevisionResolver.getClass.getResourceAsStream("/version.sbt")
+      val is   = getClass.getResourceAsStream("/version.sbt")
       val body = IOUtils.toString(is, "UTF-8");
-      try {
-        val VersionR(version) = body
-        version
-      } catch {
-        case e: Exception =>
-          throw new IllegalArgumentException(s"Could not parse plugin version from input string: $body", e)
+      VersionR.findFirstMatchIn(body) match {
+        case Some(version) => version.group(1)
+        case _ => sys.error(s"Could not parse plugin version from input string: $body")
       }
     } catch {
       case e: Exception =>
         throw new IllegalArgumentException(s"An error occured while loading current plugin version!", e)
     }
-  }
 
-  def resolveLatestPluginVersion() = {
+  def resolveLatestPluginVersion() =
     try {
       resolveLatestVersion(
-          repo         = InstantorReleases,
-          scalaVersion = "2.10",
-          sbtVersion   = "0.13",
-          groupId      = "com.instantor",
-          artifactId   = "sbt-instantor-plugin")
+        repo         = InstantorReleases
+      , scalaVersion = "2.10"
+      , sbtVersion   = "0.13"
+      , groupId      = "com.instantor"
+      , artifactId   = "sbt-instantor-plugin"
+      )
     } catch {
       case e: Exception =>
-        throw new IllegalArgumentException(s"An error occured while loading plugin latest published version!", e)
+        throw new IllegalArgumentException(s"An error occured while finding latest published version of plugin!", e)
     }
-  }
-
 
   def resolveLatestVersion(repo: MavenRepository, scalaVersion: String, sbtVersion: String, groupId: String, artifactId: String): String = {
     val pattern = s"[organisation]/[module]_${ scalaVersion }_${ sbtVersion }/[revision]/[artifact]-[revision](-[classifier]).[ext]"
-    val version = "latest.release";
+    val version = "latest.release"
 
     val resolver = getResolver(repo.name, repo.root, pattern)
     val ivy = getIvy(resolver)
@@ -95,7 +90,7 @@ object RevisionResolver extends InstantorRepositories {
     val envelopeRevisionId = ModuleRevisionId.newInstance(groupId, artifactId + "-envelope", version)
     val revisionId         = ModuleRevisionId.newInstance(groupId, artifactId, version)
 
-    val moduleDescriptor      = DefaultModuleDescriptor.newDefaultInstance(envelopeRevisionId)
+    val moduleDescriptor     = DefaultModuleDescriptor.newDefaultInstance(envelopeRevisionId)
     val dependencydescriptor = new DefaultDependencyDescriptor(moduleDescriptor, revisionId, false, false, false)
 
     dependencydescriptor.addDependencyConfiguration("default", "master")

@@ -1,7 +1,6 @@
 package com.instantor.plugin
 
 import sbt._
-import Keys._
 
 trait Dependencies {
   val androidSDK = "com.google.android" % "android" % "4.1.1.4" % "provided"
@@ -48,6 +47,8 @@ trait Dependencies {
 
   val jetty   = "org.eclipse.jetty" % "jetty-webapp"      % "9.2.2.v20140723" % "container"
   val servlet = "javax.servlet"     % "javax.servlet-api" % "3.0.1"           % "provided"
+
+  val ivy = "org.apache.ivy" % "ivy" % "2.4.0-rc1"
 
   val jodaTime    = "joda-time" % "joda-time"    % "2.3"
   val jodaConvert = "org.joda"  % "joda-convert" % "1.6"
