@@ -11,7 +11,8 @@ import org.apache.ivy.plugins.resolver.{ DependencyResolver, IBiblioResolver }
 import sbt.MavenRepository
 
 object RevisionResolver extends InstantorRepositories {
-  val VersionR = """version in ThisBuild := "(.*)""""r
+  private val VersionR = """version in ThisBuild := "(.*)""""r
+
   def getCurrentPluginVersion() = {
     try {
       val is   = RevisionResolver.getClass.getResourceAsStream("/version.sbt")

@@ -3,8 +3,6 @@ package com.instantor.plugin
 import sbt._
 import Keys._
 
-import com.instantor.props.PropsLoader
-
 trait RevisionPlugin {
   private val logger = ConsoleLogger()
 
