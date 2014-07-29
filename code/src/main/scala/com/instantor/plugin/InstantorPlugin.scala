@@ -15,9 +15,9 @@ object InstantorPlugin
     with RevisionSettings
     with Dependencies {
 
-  // Autoload until ported to extend AutoPlugin
-  override lazy val projectSettings =
-    instantorSettings
+  // Disabled "Autoload" until ported to extend AutoPlugin
+  // override lazy val projectSettings =
+  //   instantorSettings
 
   private lazy val externalPluginSettings: Seq[Setting[_]] =
     eclipseSettings ++
@@ -35,8 +35,6 @@ object InstantorPlugin
     otherSettings
 
   // ---------------------------------------------------------------------------
-
-  lazy val isSnapshot = Def.setting { version.value endsWith "-SNAPSHOT" }
 
   lazy val privateRelease =
     publishTo := Some(if(isSnapshot.value) InstantorPrivateSnapshots else InstantorPrivateReleases)
