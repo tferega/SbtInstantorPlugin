@@ -13,7 +13,8 @@ object InstantorPlugin
     with CompilerSettings
     with ResolverSettings
     with RevisionSettings
-    with Dependencies {
+    with Dependencies
+    with Publications {
 
   // Disabled "Autoload" until ported to extend AutoPlugin
   // override lazy val projectSettings =
