@@ -39,8 +39,6 @@ trait Dependencies {
   val etbLift = "hr.element.etb" %% "etb-lift" % "0.1.5"
   val etbImg  = "hr.element.etb" %% "etb-img"  % "0.2.1"
 
-  val instantorApi = "com.instantor" % "instantor-api" % "0.4.1"
-
   val iorc = "org.pgscala" %% "pgscala-iorc" % "0.1.9"
 
   val itext = "com.itextpdf" % "itextpdf" % "5.5.1"
@@ -84,9 +82,6 @@ trait Dependencies {
 
   val pgscalaLegacy = "hr.element.pgscala" %% "pgscala-pool-legacy" % "0.1.7-2"
 
-  val propsLoaderApi  = "com.instantor.props" % "propsloader-api"  % "0.3.14"
-  val propsLoaderCore = "com.instantor.props" % "propsloader-core" % "0.3.14"
-
   val rhino = "org.mozilla" % "rhino" % "1.7R4"
 
   val scalaIoCore = "com.github.scala-incubator.io" %% "scala-io-core" % "0.4.3"
@@ -127,11 +122,8 @@ trait Dependencies {
 
   val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2"
 
-  val slf4j          = "org.slf4j" % "slf4j-api"        % "1.7.7"
+  val slf4jApi       = "org.slf4j" % "slf4j-api"        % "1.7.7"
   val log4jOverSlf4j = "org.slf4j" % "log4j-over-slf4j" % "1.7.7"
-
-  val totalogInterfaces = "com.instantor.totalog" % "totalog-interfaces" % "0.5.1"
-  val totalogTransport  = "com.instantor.totalog" % "totalog-transport"  % "0.5.5"
 
 
   /* Testing  */
