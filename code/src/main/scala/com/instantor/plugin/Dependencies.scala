@@ -131,7 +131,7 @@ trait Dependencies {
   val log4jOverSlf4j = "org.slf4j" % "log4j-over-slf4j" % "1.7.7"
 
   val totalogInterfaces = "com.instantor.totalog" % "totalog-interfaces" % "0.5.1"
-  val totalogTransport  = "com.instantor.totalog" % "totalog-transport"  % "0.5.4"
+  val totalogTransport  = "com.instantor.totalog" % "totalog-transport"  % "0.5.5"
 
 
   /* Testing  */
