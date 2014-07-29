@@ -84,8 +84,8 @@ trait Dependencies {
 
   val pgscalaLegacy = "hr.element.pgscala" %% "pgscala-pool-legacy" % "0.1.7-2"
 
-  val propsLoaderApi  = "com.instantor.props" %  "propsloader-api"  % "0.3.11"
-  val propsLoaderCore = "com.instantor.props" %  "propsloader-core" % "0.3.11"
+  val propsLoaderApi  = "com.instantor.props" %  "propsloader-api"  % "0.3.12"
+  val propsLoaderCore = "com.instantor.props" %  "propsloader-core" % "0.3.12"
 
   val rhino = "org.mozilla" % "rhino" % "1.7R4"
 
