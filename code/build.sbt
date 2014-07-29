@@ -2,9 +2,7 @@ sbtPlugin := true
 
 name := "Sbt Instantor Plugin"
 
-organization := "com.instantor"
-
-version := "0.3.26"
+version := "0.3.27"
 
 unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
 
@@ -12,7 +10,7 @@ unmanagedSourceDirectories in Test := Nil
 
 EclipseKeys.createSrc := EclipseCreateSrc.Default + EclipseCreateSrc.Resource
 
-publishTo := Some(if (version.value endsWith "-SNAPSHOT") InstantorSnapshots else InstantorReleases)
+publicRelease
 
 libraryDependencies ++= Seq(
   commonsIo

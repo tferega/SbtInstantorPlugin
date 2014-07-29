@@ -36,20 +36,23 @@ object InstantorPlugin
 
   // ---------------------------------------------------------------------------
 
+  lazy val isSnapshot = Def.setting { version.value endsWith "-SNAPSHOT" }
+
+  lazy val privateRelease =
+    publishTo := Some(if(isSnapshot.value) InstantorPrivateSnapshots else InstantorPrivateReleases)
+
+  lazy val publicRelease =
+    publishTo := Some(if(isSnapshot.value) InstantorSnapshots else InstantorReleases)
+
   lazy val publishingSettings: Seq[Setting[_]] = Seq(
-    publishTo := Some(
-      if (version.value endsWith "-SNAPSHOT") {
-        InstantorPrivateSnapshots
-      } else {
-        InstantorPrivateReleases
-      }
-    )
+    privateRelease
   , credentials ++= projectCredentials.value
   , publishArtifact in (Compile, packageDoc) := false
   )
 
   lazy val otherSettings: Seq[Setting[_]] = Seq(
-    shellPrompt := { state =>
+    organization := "com.instantor"
+  , shellPrompt := { state =>
       "iPlug (%s)> ".format(Project.extract(state).currentProject.id)
     }
   )
