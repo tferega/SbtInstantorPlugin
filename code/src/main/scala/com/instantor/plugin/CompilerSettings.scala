@@ -3,7 +3,7 @@ package com.instantor.plugin
 import sbt._
 import Keys._
 
-import com.typesafe.sbteclipse.plugin.EclipsePlugin.EclipseKeys.eclipseOutput
+import com.typesafe.sbteclipse.plugin.EclipsePlugin._
 
 trait CompilerSettings {
   lazy val compilerSettings: Seq[Setting[_]] = Seq(
@@ -82,6 +82,17 @@ trait CompilerSettings {
       }
     )
 
-  , eclipseOutput := Some(".target")
+  , EclipseKeys.projectFlavor := EclipseProjectFlavor.Scala
+  , EclipseKeys.eclipseOutput := Some(".target")
+  )
+
+  lazy val javaSettings: Seq[Setting[_]] = Seq(
+    autoScalaLibrary          := false
+  , crossPaths                := false
+
+  , unmanagedSourceDirectories in Compile := Seq((javaSource in Compile).value)
+  , unmanagedSourceDirectories in Test    := Seq((javaSource in Test).value)
+
+  , EclipseKeys.projectFlavor := EclipseProjectFlavor.Java
   )
 }
