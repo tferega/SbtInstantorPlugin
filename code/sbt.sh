@@ -10,7 +10,7 @@ branches=()
 while [ "$(readlink -f $path)" != "/" ]; do
   # Prettify the path
   path=$(readlink -f "$path")
-  for branch_file in $(find "$path" -maxdepth 1 -mindepth 1 -name '*.branch'); do    
+  for branch_file in $(find "$path" -maxdepth 1 -mindepth 1 -name '*.branch'); do
   if [ -e "$branch_file" ]; then
     # Store the path for later
     branch_stack[${#branch_stack[@]}]="$branch_file"
