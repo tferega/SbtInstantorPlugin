@@ -22,13 +22,13 @@ trait Dependencies {
   val commonsLang         = "org.apache.commons"  % "commons-lang3"        % "3.3.2"
   val commonsLogging      = "commons-logging"     % "commons-logging"      % "1.2"
 
-  val configrity = "org.streum" % "configrity-core" % "1.0.0"
+  val configrity = "org.streum" %% "configrity-core" % "1.0.0"
 
   val cssSelectors = "se.fishtank" %% "css-selectors-scala" % "0.1.2"
 
   val c3p0 = "com.mchange" % "c3p0" % "0.9.2.1"
 
-  val dispatchCore    = "net.databinder.dispatch" %% "dispatch-core" % "0.11.1"
+  val dispatchCore    = "net.databinder.dispatch" %% "dispatch-core" % "0.11.2"
   val dispatchClassic = "net.databinder"          %% "dispatch-http" % "0.8.10"
 
   val doitCsv = "hr.element.doit" %% "doit-csv" % "0.1.7"
