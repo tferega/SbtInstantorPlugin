@@ -5,14 +5,14 @@ import sbt._
 trait Dependencies {
   val androidSDK = "com.google.android" % "android" % "4.1.1.4" % "provided"
 
-  val akkaActor   = "com.typesafe.akka" %% "akka-actor"   % "2.3.4"
-  val akkaCluster = "com.typesafe.akka" %% "akka-cluster" % "2.3.4"
-  val akkaRemote  = "com.typesafe.akka" %% "akka-remote"  % "2.3.4"
+  val akkaActor   = "com.typesafe.akka" %% "akka-actor"   % "2.3.5"
+  val akkaCluster = "com.typesafe.akka" %% "akka-cluster" % "2.3.5"
+  val akkaRemote  = "com.typesafe.akka" %% "akka-remote"  % "2.3.5"
 
-  val asyncHttpClient = "com.ning" % "async-http-client" % "1.8.12"
+  val asyncHttpClient = "com.ning" % "async-http-client" % "1.8.13"
 
-  val bouncyCastleMail     = "org.bouncycastle" % "bcmail-jdk16"   % "1.46"
-  val bouncyCastleProvider = "org.bouncycastle" % "bcprov-jdk15on" % "1.50"
+  val bouncyCastleMail     = "org.bouncycastle" % "bcmail-jdk15on" % "1.51"
+  val bouncyCastleProvider = "org.bouncycastle" % "bcprov-jdk15on" % "1.51"
 
   val commonsCodec        = "commons-codec"       % "commons-codec"        % "1.9"
   val commonsCollections  = "commons-collections" % "commons-collections"  % "3.2.1"
@@ -48,17 +48,17 @@ trait Dependencies {
 
   val ivy = "org.apache.ivy" % "ivy" % "2.4.0-rc1"
 
-  val jodaTime    = "joda-time" % "joda-time"    % "2.3"
-  val jodaConvert = "org.joda"  % "joda-convert" % "1.6"
+  val jodaTime    = "joda-time" % "joda-time"    % "2.4"
+  val jodaConvert = "org.joda"  % "joda-convert" % "1.7"
 
   val jsch = "com.jcraft" % "jsch" % "0.1.51"
 
   val jsoup = "org.jsoup" % "jsoup" % "1.7.3"
 
-  val liftCommon = "net.liftweb" %% "lift-common" % "2.6-M4"
-  val liftJson   = "net.liftweb" %% "lift-json"   % "2.6-M4"
-  val liftUtil   = "net.liftweb" %% "lift-util"   % "2.6-M4"
-  val liftWebkit = "net.liftweb" %% "lift-webkit" % "2.6-M4"
+  val liftCommon = "net.liftweb" %% "lift-common" % "2.6-RC1"
+  val liftJson   = "net.liftweb" %% "lift-json"   % "2.6-RC1"
+  val liftUtil   = "net.liftweb" %% "lift-util"   % "2.6-RC1"
+  val liftWebkit = "net.liftweb" %% "lift-webkit" % "2.6-RC1"
 
   val lrl = "hr.element.lrl" % "last-resort-loader" % "0.0.2"
 
@@ -92,7 +92,7 @@ trait Dependencies {
   val scalaUUID = "io.jvm" %% "scala-uuid" % "0.1.3"
 
   val scalaz  = "org.scalaz" %% "scalaz-core" % "6.0.4"
-  val scalaz7 = "org.scalaz" %% "scalaz-core" % "7.1.0-RC1"
+  val scalaz7 = "org.scalaz" %% "scalaz-core" % "7.1.0"
 
   val selenate  = "net.selenate" % "selenate-client" % "0.2.16"
 
@@ -108,7 +108,7 @@ trait Dependencies {
 
   val tagSoup = "org.ccil.cowan.tagsoup" % "tagsoup" % "1.2.1"
 
-  val templater = "hr.ngs.templater" %% "templater" % "1.9.2-1"
+  val templater = "hr.ngs.templater" %% "templater" % "1.9.3-1"
 
   val xstream   = "com.thoughtworks.xstream" % "xstream" % "1.4.7"
 
@@ -116,7 +116,7 @@ trait Dependencies {
 
 
   /* Logging */
-  val akkaSlf4j = "com.typesafe.akka" %% "akka-slf4j" % "2.3.4"
+  val akkaSlf4j = "com.typesafe.akka" %% "akka-slf4j" % "2.3.5"
 
   val logback = "ch.qos.logback" % "logback-classic" % "1.1.2"
 
@@ -128,14 +128,14 @@ trait Dependencies {
 
   /* Testing  */
 
-  val akkaTestKit = "com.typesafe.akka" %% "akka-testkit" % "2.3.4" % "test"
+  val akkaTestKit = "com.typesafe.akka" %% "akka-testkit" % "2.3.5" % "test"
 
   val jsonAssert = "org.skyscreamer" % "jsonassert" % "1.2.3" % "test"
 
-  val junit          = "junit"        % "junit"           % "4.11"     % "test"
-  val junitInterface = "com.novocode" % "junit-interface" % "0.11-RC1" % "test"
+  val junit          = "junit"        % "junit"           % "4.11" % "test"
+  val junitInterface = "com.novocode" % "junit-interface" % "0.11" % "test"
 
-  val scalaTest = "org.scalatest" %% "scalatest" % "2.2.0" % "test"
+  val scalaTest = "org.scalatest" %% "scalatest" % "2.2.1" % "test"
 
   val xmlUnit = "xmlunit" % "xmlunit" % "1.5" % "test"
 }
