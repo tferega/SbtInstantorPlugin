@@ -6,8 +6,8 @@ trait Publications {
   val InstantorApi = "com.instantor" % "instantor-api" % "0.4.1"
 
   object PropsLoader {
-    val Api  = "com.instantor.props" % "propsloader-api"  % "0.3.15"
-    val Core = "com.instantor.props" % "propsloader-core" % "0.3.17"
+    val Api  = "com.instantor.props" % "propsloader-api"  % "0.3.18"
+    val Core = "com.instantor.props" % "propsloader-core" % "0.3.18"
   }
 
   object TotaLog {
