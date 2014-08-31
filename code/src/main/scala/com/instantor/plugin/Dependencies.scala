@@ -77,8 +77,7 @@ trait Dependencies {
   val picoContainer = "org.picocontainer" % "picocontainer" % "3.0.a3" classifier "ngs"
 
   val postgres = "org.postgresql" %  "postgresql"   % "9.3-1102-jdbc41"
-  val pgscala  = "org.pgscala"    %% "pgscala"      % "0.7.25"
-  val pgpool   = "org.pgscala"    %% "pgscala-pool" % "0.2.18"
+  val pgscala  = "org.pgscala"    %% "pgscala"      % "0.7.27"
 
   val pgscalaLegacy = "hr.element.pgscala" %% "pgscala-pool-legacy" % "0.1.7-2"
 

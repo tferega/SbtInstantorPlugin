@@ -77,6 +77,20 @@ trait CompilerSettings {
           , "-Ywarn-numeric-widen"
           )
 
+        case x if x startsWith "2.9" => Seq(
+            "-deprecation"
+          , "-encoding", "UTF-8"
+          , "-optimise"
+          , "-unchecked"
+          , "-Xcheckinit"
+          , "-Xmax-classfile-name", "72"
+          , "-Xno-forwarders"
+          , "-Yclosure-elim"
+          , "-Ydead-code"
+          , "-Yinline"
+          , "-Ywarn-dead-code" 
+          )
+
         case x =>
           sys.error("Unsupported Scala version: " + x)
       }
