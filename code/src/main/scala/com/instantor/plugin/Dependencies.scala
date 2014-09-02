@@ -66,18 +66,18 @@ trait Dependencies {
 
   val mimeTypes = "hr.element.onebyseven.common" % "mimetypes" % "2013-10-21"
 
-  val ngsAkka       = "hr.ngs" %% "ngs-akka"       % "0.4.1-M1"
-  val ngsClient     = "hr.ngs" %% "ngs-client"     % "0.4.1-M1"
-  val ngsCore       = "hr.ngs" %% "ngs-core"       % "0.4.1-M1"
-  val ngsInterfaces = "hr.ngs" %% "ngs-interfaces" % "0.4.1-M1"
-  val ngsUtil       = "hr.ngs" %% "ngs-util"       % "0.4.1-M1"
+  val ngsAkka       = "hr.ngs" %% "dsl-server-akka"       % "0.4.0"
+  val ngsClient     = "hr.ngs" %% "dsl-server-client"     % "0.4.0"
+  val ngsCore       = "hr.ngs" %% "dsl-server-core"       % "0.4.0"
+  val ngsInterfaces = "hr.ngs" %% "dsl-server-interfaces" % "0.4.0"
+  val ngsUtil       = "hr.ngs" %% "dsl-server-util"       % "0.4.0"
 
   val openCsv = "net.sf.opencsv" % "opencsv" % "2.3"
 
   val picoContainer = "org.picocontainer" % "picocontainer" % "3.0.a3" classifier "ngs"
 
   val postgres = "org.postgresql" %  "postgresql"   % "9.3-1102-jdbc41"
-  val pgscala  = "org.pgscala"    %% "pgscala"      % "0.7.27"
+  val pgscala  = "org.pgscala"    %% "pgscala"      % "0.7.29"
 
   val pgscalaLegacy = "hr.element.pgscala" %% "pgscala-pool-legacy" % "0.1.7-2"
 
@@ -86,7 +86,7 @@ trait Dependencies {
   val scalaIoCore = "com.github.scala-incubator.io" %% "scala-io-core" % "0.4.3"
   val scalaIoFile = "com.github.scala-incubator.io" %% "scala-io-file" % "0.4.3"
 
-  val scalaTime = "com.github.nscala-time" %% "nscala-time" % "1.2.0"
+  val scalaTime = "com.github.nscala-time" %% "nscala-time" % "1.4.0"
 
   val scalaUUID = "io.jvm" %% "scala-uuid" % "0.1.3"
 
@@ -107,7 +107,7 @@ trait Dependencies {
 
   val tagSoup = "org.ccil.cowan.tagsoup" % "tagsoup" % "1.2.1"
 
-  val templater = "hr.ngs.templater" %% "templater" % "1.9.3-1"
+  val templater = "hr.ngs.templater" %% "templater" % "1.9.4"
 
   val xstream   = "com.thoughtworks.xstream" % "xstream" % "1.4.7"
 
