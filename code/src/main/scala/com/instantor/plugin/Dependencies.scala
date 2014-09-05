@@ -66,11 +66,11 @@ trait Dependencies {
 
   val mimeTypes = "hr.element.onebyseven.common" % "mimetypes" % "2013-10-21"
 
-  val ngsAkka       = "hr.ngs" %% "dsl-server-akka"       % "0.4.1"
-  val ngsClient     = "hr.ngs" %% "dsl-server-client"     % "0.4.1"
-  val ngsCore       = "hr.ngs" %% "dsl-server-core"       % "0.4.1"
-  val ngsInterfaces = "hr.ngs" %% "dsl-server-interfaces" % "0.4.1"
-  val ngsUtil       = "hr.ngs" %% "dsl-server-util"       % "0.4.1"
+  val dslServerAkka       = "hr.ngs" %% "dsl-server-akka"       % "0.4.1"
+  val dslServerClient     = "hr.ngs" %% "dsl-server-client"     % "0.4.1"
+  val dslServerCore       = "hr.ngs" %% "dsl-server-core"       % "0.4.1"
+  val dslServerInterfaces = "hr.ngs" %% "dsl-server-interfaces" % "0.4.1"
+  val dslServerUtil       = "hr.ngs" %% "dsl-server-util"       % "0.4.1"
 
   val openCsv = "net.sf.opencsv" % "opencsv" % "2.3"
 
