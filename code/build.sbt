@@ -4,7 +4,7 @@ sbtPlugin := true
 
 name := "Sbt Instantor Plugin"
 
-version := "0.3.44"
+version := "0.3.45-SNAPSHOT"
 
 unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
 
