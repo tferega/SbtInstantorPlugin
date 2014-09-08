@@ -4,7 +4,7 @@ sbtPlugin := true
 
 name := "Sbt Instantor Plugin"
 
-version := "0.3.46-SNAPSHOT"
+version := "0.3.46"
 
 unmanagedSourceDirectories in Compile := (scalaSource in Compile).value :: Nil
 
@@ -23,9 +23,11 @@ libraryDependencies ++= Seq(
 
 ReleaseKeys.versionFile := file("src") / "main" / "resources" / "version.sbt"
 
+addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.7.4")
+
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.5.0")
 
-addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.7.4")
+addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.6.0")
 
 addSbtPlugin("com.github.gseitz" % "sbt-release" % "0.8.4")
 

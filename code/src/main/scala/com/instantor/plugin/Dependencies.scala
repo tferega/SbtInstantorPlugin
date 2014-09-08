@@ -5,9 +5,9 @@ import sbt._
 trait Dependencies {
   val androidSDK = "com.google.android" % "android" % "4.1.1.4" % "provided"
 
-  val akkaActor   = "com.typesafe.akka" %% "akka-actor"   % "2.3.5"
-  val akkaCluster = "com.typesafe.akka" %% "akka-cluster" % "2.3.5"
-  val akkaRemote  = "com.typesafe.akka" %% "akka-remote"  % "2.3.5"
+  val akkaActor   = "com.typesafe.akka" %% "akka-actor"   % "2.3.6"
+  val akkaCluster = "com.typesafe.akka" %% "akka-cluster" % "2.3.6"
+  val akkaRemote  = "com.typesafe.akka" %% "akka-remote"  % "2.3.6"
 
   val asyncHttpClient = "com.ning" % "async-http-client" % "1.8.13"
 
@@ -87,6 +87,7 @@ trait Dependencies {
   val scalaIoFile = "com.github.scala-incubator.io" %% "scala-io-file" % "0.4.3"
 
   val scalaTime = "com.github.nscala-time" %% "nscala-time" % "1.4.0"
+  val scalaTransliteration = "hr.element.etb" %% "scala-transliteration" % "0.0.1"
 
   val scalaUUID = "io.jvm" %% "scala-uuid" % "0.1.3"
 
@@ -115,7 +116,7 @@ trait Dependencies {
 
 
   /* Logging */
-  val akkaSlf4j = "com.typesafe.akka" %% "akka-slf4j" % "2.3.5"
+  val akkaSlf4j = "com.typesafe.akka" %% "akka-slf4j" % "2.3.6"
 
   val logback = "ch.qos.logback" % "logback-classic" % "1.1.2"
 
@@ -127,7 +128,7 @@ trait Dependencies {
 
   /* Testing  */
 
-  val akkaTestKit = "com.typesafe.akka" %% "akka-testkit" % "2.3.5" % "test"
+  val akkaTestKit = "com.typesafe.akka" %% "akka-testkit" % "2.3.6" % "test"
 
   val jsonAssert = "org.skyscreamer" % "jsonassert" % "1.2.3" % "test"
 

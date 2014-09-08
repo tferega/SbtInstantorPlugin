@@ -4,6 +4,7 @@ import sbt._
 import Keys._
 
 import com.typesafe.sbteclipse.plugin.EclipsePlugin._
+import org.sbtidea.SbtIdeaPlugin._
 
 trait CompilerSettings {
   lazy val compilerSettings: Seq[Setting[_]] = Seq(
@@ -88,7 +89,7 @@ trait CompilerSettings {
           , "-Yclosure-elim"
           , "-Ydead-code"
           , "-Yinline"
-          , "-Ywarn-dead-code" 
+          , "-Ywarn-dead-code"
           )
 
         case x =>
@@ -98,6 +99,8 @@ trait CompilerSettings {
 
   , EclipseKeys.projectFlavor := EclipseProjectFlavor.Scala
   , EclipseKeys.eclipseOutput := Some(".target")
+
+  , ideaExcludeFolders := Seq(".idea", ".idea_modules")
   )
 
   lazy val javaSettings: Seq[Setting[_]] = Seq(
