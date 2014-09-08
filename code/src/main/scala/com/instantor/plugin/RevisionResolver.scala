@@ -11,19 +11,14 @@ import org.apache.ivy.plugins.resolver.{ DependencyResolver, IBiblioResolver }
 import sbt.MavenRepository
 
 object RevisionResolver extends InstantorRepositories {
-  val VersionPattern = """version in ThisBuild := "(.*)""""r
-
   def getCurrentPluginVersion() =
     try {
-      val is   = getClass.getResourceAsStream("/version.sbt")
-      val body = IOUtils.toString(is, "UTF-8");
-      VersionPattern.findFirstMatchIn(body) match {
-        case Some(version) => version.group(1)
-        case _ => sys.error(s"Could not parse plugin version from input string: $body")
-      }
+      val props = new java.util.Properties
+      props.load(getClass.getResourceAsStream("version.properties"))
+      props.getProperty("version")
     } catch {
       case e: Exception =>
-        throw new IllegalArgumentException(s"An error occured while loading current plugin version!", e)
+        throw new IllegalArgumentException(s"An error occurred while loading current plugin version!", e)
     }
 
   def resolveLatestPluginVersion() =
