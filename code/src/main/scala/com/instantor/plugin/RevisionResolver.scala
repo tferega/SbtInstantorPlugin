@@ -14,7 +14,7 @@ object RevisionResolver extends InstantorRepositories {
   def getCurrentPluginVersion() =
     try {
       val props = new java.util.Properties
-      props.load(getClass.getResourceAsStream("version.properties"))
+      props.load(getClass.getResourceAsStream("version.props"))
       props.getProperty("version")
     } catch {
       case e: Exception =>
