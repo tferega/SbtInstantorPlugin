@@ -4,20 +4,22 @@ import sbt._
 import Keys._
 
 import com.instantor.props._
-import org.slf4j._
 
-object BranchResolver {
-  private val logger = LoggerFactory.getLogger("SbtInstantorPlugin")
-  private val propsLoaderFactory = PropsLoaderFactory.init(logger)
+class BranchResolver(logger: Logger) {
+  private val slf4jLogger = new SbtLoggerWrapper(logger)
+  private val propsLoaderFactory = PropsLoaderFactory.init(slf4jLogger)
 
+  // This function has to be executed once for each project (so that each
+  // project can know the top project name).
+  // To keep it from spamming the log, "inferrance" message is trace.
   def topProjectName(name: String) = {
     val tpn = name
-      .replaceFirst("-.*", "") // kill everything after first hyphen
-      .replaceAll("\\s+", "")   // kill all whitespaces
+      .replaceFirst("-.*", "")  // kill everything after first hyphen
+      .replaceAll("\\s+", "")   // kill all whitespace
 
     tpn match {
       case tpn if tpn != name =>
-        logger.info(s"Top project name $tpn inferred from project name $name")
+        logger.debug(s"Top project name $tpn inferred from project name $name")
       case _ =>
         logger.info(s"Top project name: $name")
     }
@@ -25,10 +27,19 @@ object BranchResolver {
     tpn
   }
 
-  def propsResolver(projectName: String) =
+  // "projectName" here is actually top project name. It makes no sense to
+  // load the same propsResolver for each sub-project, so the results are
+  // cached.
+  val propsResolver = Memoize1(propsResolverRaw)
+  private def propsResolverRaw(projectName: String) = {
     propsLoaderFactory.loadBranch(projectName)
+  }
 
-  def credentials(propsResolver: PropsResolver): Option[Credentials] = {
+  // There is only one PropsResover per top-project. It makes no sense to
+  // load the came credentials for each sub-project, so the results are
+  // cached.
+  val credentials = Memoize1(credentialsRaw)
+  private def credentialsRaw(propsResolver: PropsResolver): Option[Credentials] = {
     val credentialsFile = propsResolver.resolve("nexus").toFile()
 
     if (credentialsFile.exists()) {
@@ -41,13 +52,16 @@ object BranchResolver {
 }
 
 trait BranchSettings {
+  private val logger = ConsoleLogger()
+  private val branchResolver = new BranchResolver(logger)
+
   val topProjectName     = SettingKey[String]("top-project-name")
   val projectCredentials = SettingKey[Seq[Credentials]]("project-credentials")
   val propsResolver      = SettingKey[PropsResolver]("props-resolver")
 
   lazy val branchSettings: Seq[Setting[_]] = Seq(
-    topProjectName     := BranchResolver.topProjectName(name.value),
-    propsResolver      := BranchResolver.propsResolver(topProjectName.value),
-    projectCredentials := BranchResolver.credentials(propsResolver.value).toList
+    topProjectName     := branchResolver.topProjectName(name.value),
+    propsResolver      := branchResolver.propsResolver(topProjectName.value),
+    projectCredentials := branchResolver.credentials(propsResolver.value).toList
   )
 }

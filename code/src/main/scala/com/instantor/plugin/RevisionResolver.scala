@@ -11,7 +11,7 @@ import org.apache.ivy.plugins.resolver.{ DependencyResolver, IBiblioResolver }
 import sbt.MavenRepository
 
 object RevisionResolver extends InstantorRepositories {
-  def getCurrentPluginVersion() =
+  lazy val getCurrentPluginVersion =
     try {
       val props = new java.util.Properties
       props.load(getClass.getResourceAsStream("version.props"))
@@ -21,7 +21,7 @@ object RevisionResolver extends InstantorRepositories {
         throw new IllegalArgumentException(s"An error occurred while loading current plugin version!", e)
     }
 
-  def resolveLatestPluginVersion() =
+  lazy val resolveLatestPluginVersion =
     try {
       resolveLatestVersion(
         repo         = InstantorReleases
@@ -35,7 +35,7 @@ object RevisionResolver extends InstantorRepositories {
         throw new IllegalArgumentException(s"An error occured while finding latest published version of plugin!", e)
     }
 
-  def resolveLatestVersion(repo: MavenRepository, scalaVersion: String, sbtVersion: String, groupId: String, artifactId: String): String = {
+  private def resolveLatestVersion(repo: MavenRepository, scalaVersion: String, sbtVersion: String, groupId: String, artifactId: String): String = {
     val pattern = s"[organisation]/[module]_${ scalaVersion }_${ sbtVersion }/[revision]/[artifact]-[revision](-[classifier]).[ext]"
     val version = "latest.release"
 
