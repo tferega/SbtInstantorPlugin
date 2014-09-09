@@ -100,7 +100,7 @@ trait CompilerSettings {
   , EclipseKeys.projectFlavor := EclipseProjectFlavor.Scala
   , EclipseKeys.eclipseOutput := Some(".target")
 
-  , ideaExcludeFolders := Seq(".idea", ".idea_modules")
+  , ideaExcludeFolders := Seq(".idea", ".idea_modules", ".settings")
   )
 
   lazy val javaSettings: Seq[Setting[_]] = Seq(
