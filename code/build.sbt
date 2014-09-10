@@ -17,6 +17,7 @@ libraryDependencies ++= Seq(
 , ivy
 , logback
 , PropsLoader.Core
+, instantorCommonsPlugin
 )
 
 addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.7.4")
@@ -34,7 +35,7 @@ onLoad := {
   val propertiesPath = (
     baseDirectory.value
     / "src" / "main" / "resources"
-    / "com" / "instantor" / "plugin"
+    / "com" / "instantor" / "plugin" / "utils"
     / "version.props"
   )
   org.apache.commons.io.FileUtils.writeStringToFile(propertiesPath, body, "UTF-8")

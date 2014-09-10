@@ -1,33 +1,25 @@
 package com.instantor.plugin
+package utils
 
-import org.slf4j.{ Logger => SLF4JLogger }
+import com.instantor.commons._
+import java.util.regex.{ Matcher, Pattern }
 import org.slf4j.helpers.MarkerIgnoringBase
+import org.slf4j.{ Logger => SLF4JLogger }
 import sbt.{ Logger => SbtLogger }
-import java.io.StringWriter
-import java.io.PrintWriter
 
 object SbtLoggerWrapper {
-  private val R = """\{\}"""
+  private val R = Pattern.quote("{}")
   private def toMessage(message: String, args: List[Any]): String = {
     args match {
       case Nil => message
       case head :: tail =>
-          toMessage(message.replaceFirst(R, head.toString), tail)
+          val replacement = Matcher.quoteReplacement(head.toString)
+          toMessage(message.replaceFirst(R, replacement), tail)
     }
   }
 
   private def toMessageWithCause(message: String, cause: Throwable) =
-    message + "\n" + getStackTrace(cause)
-
-  private def getStackTrace(e: Throwable): String = {
-    val sw = new StringWriter
-    val pw = new PrintWriter(sw)
-    e.printStackTrace(pw)
-    val s = sw.toString
-    pw.close
-    sw.close
-    s
-  }
+    message + "\n" + cause.stackTrace
 }
 
 class SbtLoggerWrapper(protected val log: SbtLogger)
@@ -70,5 +62,4 @@ class SbtLoggerWrapper(protected val log: SbtLogger)
   override def trace(msg: String, arg1: Any, arg2: Any) = ()
   override def trace(msg: String, arg1: Any)            = ()
   override def trace(msg: String)                       = ()
-
 }

@@ -2,6 +2,9 @@ package com.instantor.plugin
 
 import sbt._
 import Keys._
+
+import lists.{ Dependencies, Publications }
+
 import com.typesafe.sbteclipse.plugin.EclipsePlugin.eclipseSettings
 import net.virtualvoid.sbt.graph.Plugin.graphSettings
 import sbtrelease.ReleasePlugin.releaseSettings

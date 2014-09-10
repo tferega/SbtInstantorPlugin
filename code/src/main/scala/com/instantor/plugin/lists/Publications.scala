@@ -1,4 +1,5 @@
 package com.instantor.plugin
+package lists
 
 import sbt._
 

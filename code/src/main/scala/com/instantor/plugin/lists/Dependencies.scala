@@ -1,4 +1,5 @@
 package com.instantor.plugin
+package lists
 
 import sbt._
 
@@ -38,6 +39,9 @@ trait Dependencies {
   val etbUtil = "hr.element.etb" %% "etb-util" % "0.2.20"
   val etbLift = "hr.element.etb" %% "etb-lift" % "0.1.5"
   val etbImg  = "hr.element.etb" %% "etb-img"  % "0.2.1"
+
+  val instantorCommons       = "com.instantor.commons" %% "instantorcommons-common" % "0.0.1"
+  val instantorCommonsPlugin = "com.instantor.commons" %% "instantorcommons-plugin" % "0.0.1"
 
   val iorc = "org.pgscala" %% "pgscala-iorc" % "0.1.9"
 
