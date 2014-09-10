@@ -40,9 +40,6 @@ trait Dependencies {
   val etbLift = "hr.element.etb" %% "etb-lift" % "0.1.5"
   val etbImg  = "hr.element.etb" %% "etb-img"  % "0.2.1"
 
-  val instantorCommons       = "com.instantor.commons" %% "instantorcommons-common" % "0.0.1"
-  val instantorCommonsPlugin = "com.instantor.commons" %% "instantorcommons-plugin" % "0.0.1"
-
   val iorc = "org.pgscala" %% "pgscala-iorc" % "0.1.9"
 
   val itext = "com.itextpdf" % "itextpdf" % "5.5.1"
@@ -70,11 +67,11 @@ trait Dependencies {
 
   val mimeTypes = "hr.element.onebyseven.common" % "mimetypes" % "2013-10-21"
 
-  val dslServerAkka       = "hr.ngs" %% "dsl-server-akka"       % "0.4.1"
-  val dslServerClient     = "hr.ngs" %% "dsl-server-client"     % "0.4.1"
-  val dslServerCore       = "hr.ngs" %% "dsl-server-core"       % "0.4.1"
-  val dslServerInterfaces = "hr.ngs" %% "dsl-server-interfaces" % "0.4.1"
-  val dslServerUtil       = "hr.ngs" %% "dsl-server-util"       % "0.4.1"
+  val dslServerAkka       = "hr.ngs" %% "dsl-server-akka"       % "0.4.2"
+  val dslServerClient     = "hr.ngs" %% "dsl-server-client"     % "0.4.2"
+  val dslServerCore       = "hr.ngs" %% "dsl-server-core"       % "0.4.2"
+  val dslServerInterfaces = "hr.ngs" %% "dsl-server-interfaces" % "0.4.2"
+  val dslServerUtil       = "hr.ngs" %% "dsl-server-util"       % "0.4.2"
 
   val openCsv = "net.sf.opencsv" % "opencsv" % "2.3"
 
@@ -92,8 +89,8 @@ trait Dependencies {
 
   val scalaTime = "com.github.nscala-time" %% "nscala-time" % "1.4.0"
   val scalaTransliteration = "hr.element.etb" %% "scala-transliteration" % "0.0.1"
-
   val scalaUUID = "io.jvm" %% "scala-uuid" % "0.1.3"
+  val scalaXml = "org.scala-lang.modules" %% "scala-xml" % "1.0.2"
 
   val scalaz  = "org.scalaz" %% "scalaz-core" % "6.0.4"
   val scalaz7 = "org.scalaz" %% "scalaz-core" % "7.1.0"

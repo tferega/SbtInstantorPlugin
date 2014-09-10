@@ -3,23 +3,23 @@ package com.instantor.plugin
 import sbt._
 import Keys._
 
-import lists.CompilerOptions
+import com.instantor.commons.plugin. { CompilerOptions => CO }
 
 import com.typesafe.sbteclipse.plugin.EclipsePlugin.{ EclipseKeys, EclipseProjectFlavor }
 import org.sbtidea.SbtIdeaPlugin
 
-trait CompilerSettings extends CompilerOptions {
+trait CompilerSettings {
   lazy val compilerSettings: Seq[Setting[_]] = Seq(
     crossScalaVersions := Seq("2.10.4")
   , scalaVersion := crossScalaVersions.value.head
 
-  , javacOptions := javaOptions_all
+  , javacOptions := CO.javacOptions
 
   , scalacOptions := (
       scalaVersion.value match {
-        case x if x startsWith "2.11" => scalaOptions_211
-        case x if x startsWith "2.10" => scalaOptions_210
-        case x if x startsWith "2.9"  => scalaOptions_209
+        case x if x startsWith "2.11" => CO.scalacOptions_211
+        case x if x startsWith "2.10" => CO.scalacOptions_210
+        case x if x startsWith "2.9"  => CO.scalacOptions_209
         case x => sys.error("Unsupported Scala version: " + x)
       }
     )

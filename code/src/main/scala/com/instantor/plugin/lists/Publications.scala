@@ -6,6 +6,11 @@ import sbt._
 trait Publications {
   val InstantorApi = "com.instantor" % "instantor-api" % "0.4.1"
 
+  object Commons {
+    val common = "com.instantor.commons" %% "instantorcommons-common" % "0.0.4"
+    val plugin = "com.instantor.commons" %% "instantorcommons-plugin" % "0.0.4"
+  }
+
   object PropsLoader {
     val Api  = "com.instantor.props" % "propsloader-api"  % "0.3.18"
     val Core = "com.instantor.props" % "propsloader-core" % "0.3.18"
