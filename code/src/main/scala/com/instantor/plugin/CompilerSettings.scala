@@ -3,7 +3,7 @@ package com.instantor.plugin
 import sbt._
 import Keys._
 
-import com.instantor.commons.plugin. { CompilerOptions => CO }
+import lists.{ CompilerOptions => CO }
 
 import com.typesafe.sbteclipse.plugin.EclipsePlugin.{ EclipseKeys, EclipseProjectFlavor }
 import org.sbtidea.SbtIdeaPlugin

@@ -3,18 +3,15 @@ package utils
 
 import sbt._
 
+import library.BranchTools
+
 import com.instantor.commons.Memoize1
-import com.instantor.commons.plugin.BranchTools
 import com.instantor.props.PropsResolver
 
 class BranchToolsWrapper(logger: Logger) {
-  private val bt = new BranchTools(new SbtLoggerWrapper(logger))
+  private val bt = new BranchTools(logger)
 
-  val topProjectName = Memoize1(bt.topProjectName)
+  val topProjectName = bt.topProjectName _
   val propsResolver  = Memoize1(bt.propsResolver)
-  val credentials    = { propsResolver: PropsResolver =>
-    Memoize1(bt.credentials)(propsResolver)
-        .map(Credentials.apply)
-        .toList
-  }
+  val credentials    = Memoize1(bt.credentials)
 }

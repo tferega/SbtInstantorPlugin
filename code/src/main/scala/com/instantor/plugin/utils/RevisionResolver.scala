@@ -3,9 +3,8 @@ package utils
 
 import sbt._
 
+import library.IvyRevisionResolver
 import lists.InstantorRepositories
-
-import com.instantor.commons.plugin.IvyRevisionResolver
 
 class RevisionResolver(logger: Logger) extends InstantorRepositories {
   lazy val report: Unit = {

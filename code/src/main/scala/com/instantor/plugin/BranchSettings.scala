@@ -5,8 +5,6 @@ import Keys._
 
 import utils.BranchToolsWrapper
 
-import com.instantor.commons.Memoize1
-import com.instantor.commons.plugin.BranchTools
 import com.instantor.props.PropsResolver
 
 trait BranchSettings {
